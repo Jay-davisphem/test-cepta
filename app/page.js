@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import axios from "redaxios";
 import { Header } from "./_components/Header";
 import { ActionButtons } from "./_components/ActionBtns";
@@ -27,6 +28,7 @@ export default function Home() {
   }, [transactionRef]);
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-6xl mx-auto px-6 py-16 sm:px-8 sm:py-20">
         <main className="flex flex-col items-center justify-center">
@@ -54,5 +56,6 @@ export default function Home() {
         </main>
       </div>
     </div>
+    </Suspense>
   );
 }
